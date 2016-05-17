@@ -1,0 +1,44 @@
+<script src="app/angular.min.js"></script>
+<div class="form-signin">
+  <h2 style="color: #0000FF">REGISTRO DE CELULARES</h2>
+  <br>
+  <input type="text" ng-model="List.id" class="form-control" placeholder="ID">
+  <br>
+  <input type="text" ng-model="List.Nombre" class="form-control" placeholder="Nombre">
+  <br>
+  <input type="text" ng-model="List.Descripcion" class="form-control" placeholder="Descripcion">
+  <br>
+  <input ng-hide="Ocultar"  type="button" ng-click="createTodo()" value="Ingresar" class="btn btn-lg btn-primary">
+  <br>
+  <br>
+
+  <button ng-Show="Mostrar" ng-click="editTodo(List.id, List.Nombre, List.Descripcion)" class="btn btn-primary">Guardar Editado</button>
+  <button ng-Show="Cancel" ng-click="Cancelar()" class="btn btn-primary">Cancelar</button>
+  <br>
+
+  <h2 style="color: #0000FF">Celulares Registrados</h2>
+  <br>
+    <input ng-model="query" class="form-control" placeholder="Buscar celular">
+    <br>
+    <br>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th style="display: none">ID</th>
+        <th>Nombre Celular</th>
+        <th>Descripcion</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="celular in Celulares | filter:query ">
+      	<td  style="display: none">{{celular.id}}</td>
+      	<td>{{celular.nombre}}</td>
+      	<td>{{celular.descripcion}}</td>
+        <td><button ng-click="Modificar(celular.id)" class="btn btn-primary">Modificar</button></td>
+      	<td><button ng-click="deleteTodo(celular.id)" class="btn btn-primary">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
